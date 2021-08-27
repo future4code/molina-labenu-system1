@@ -1,7 +1,8 @@
 import express, { Express, Request, Response } from "express"
-import { newClass } from '../types'
+import { newClass, reqBody } from '../types'
+import insertClass from '../services/insertClass'
 
-export function validateUserBody(actionType: "new" | "edit", body: any) {
+export function validateBody(actionType: "new" | "edit", body: any) {
    const expectedObject: Array<string> = ["name", "type", "startDate", "endDate"]
    const errorTips: Array<any> = []
    const checkers: any = {
@@ -87,7 +88,7 @@ export function validateUserBody(actionType: "new" | "edit", body: any) {
       name: (input: any) => checkers.isValidName(input),
       type: (input: any) => checkers.isValidType(input),
       startDate: (input: any) => checkers.isValidDate(input, "startDate"),
-      endDate: (input: any) => checkers.isValidDate(input,"endDate") && checkers.isValidEndDate(input),
+      endDate: (input: any) => checkers.isValidDate(input, "endDate") && checkers.isValidEndDate(input),
    }
 
    const validationType: any = {
@@ -124,16 +125,28 @@ export function validateUserBody(actionType: "new" | "edit", body: any) {
    }
 }
 
-
-export const createClass = async (req: Request, res: Response) => {
-   // const { name, type, startDate, endDate } = req.body
-   try {
-   await validateUserBody("new",req.body)
-   
-      res.status(200).send("belezinha").end()
-   
-   } catch (err){
-      res.status(err.status).send({message: err.message, error: err.tips}).end()
+const setBodyNewClass = (body: reqBody) => {
+   const { name, type, startDate, endDate } = body
+   const newBody: newClass = {
+      name: type === "noturno" ? name + "-na-night" : name,
+      type: type,
+      start_date: startDate,
+      end_date: endDate,
+      module: 1
    }
 
+   return newBody
+}
+
+export const createClass = async (req: Request, res: Response): Promise<any> => {
+   try {
+      if (validateBody("new", req.body)) {
+         const result = await insertClass(setBodyNewClass(req.body))
+         return res.status(200).send(result).end()
+      }
+   } catch (err) {
+      res.status(err.status)
+         .send({ message: err.message, error: err.tips })
+         .end()
+   }
 }
