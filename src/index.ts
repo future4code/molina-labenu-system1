@@ -9,12 +9,14 @@ import { addStudent } from './endpoint/addStudent';
 import { teacherClass } from './endpoint/teacherClass';
 import { studentHobbie } from './endpoint/studentHobbie';
 import { deleteStudentClass } from './endpoint/deleteStudentClass';
-
+import { studentClass } from './endpoint/studentClass';
+import {createClass} from './endpoints/createClass'
 
 const app: Express = express();
 
 app.use(express.json());
 app.use(cors());
+
 app.get("/studentHobbie/:hobby", studentHobbie)
 app.post("/create/:id", addStudentInClass)
 app.get("/getAge/:id", getStudentAge)
@@ -22,9 +24,9 @@ app.post("/delete/:id", deleteTeacherClass)
 app.post("/deleteStudentClass/:id", deleteStudentClass)
 app.post("/changeModule/:id", changeModule)
 app.get("/docentesTurma/:id", teacherClass)
+app.get("/estudanteTurma/:id", studentClass)
 app.post("/adicionar", addStudent)
-
-
+app.post("/class",createClass)
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
@@ -34,6 +36,3 @@ const server = app.listen(process.env.PORT || 3003, () => {
        console.error(`Failure upon starting server.`);
     }
 });
-
-import {createClass} from './endpoints/createClass'
-app.post("/class",createClass)
