@@ -3,7 +3,7 @@ id INT NOT NULL PRIMARY KEY auto_increment,
 name varchar(50) not null,
 email varchar(50) not null unique,
 birth_date date not null,
-class_id INT NOT NULL,
+class_id INT NOT NULL, 
 foreign key(class_id) references class(id)
 );
 
