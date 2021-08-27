@@ -25,10 +25,13 @@ app.get("/estudanteTurma/:id", studentClass)
 app.post("/adicionar", addStudent)
 
 const server = app.listen(process.env.PORT || 3003, () => {
-   if (server) {
-      const address = server.address() as AddressInfo;
-      console.log(`Server is running in http://localhost: ${address.port}`);
-   } else {
-      console.error(`Failure upon starting server.`);
-   }
+    if (server) {
+       const address = server.address() as AddressInfo;
+       console.log(`Server is running in http://localhost: ${address.port}`);
+    } else {
+       console.error(`Failure upon starting server.`);
+    }
 });
+
+import {createClass} from './endpoints/createClass'
+app.post("/class",createClass)
