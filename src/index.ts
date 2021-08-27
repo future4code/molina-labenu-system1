@@ -1,6 +1,8 @@
 import express, {Express} from 'express'
 import cors from 'cors'
 import { AddressInfo } from "net";
+
+
 import { addStudentInClass} from './endpoint/addStudentInClass';
 import { getStudentAge } from './endpoint/getStudentAge';
 import { deleteTeacherClass } from './endpoint/deleteTeacherClass';
@@ -8,6 +10,7 @@ import { changeModule } from './endpoint/changeModule';
 import { addStudent } from './endpoint/addStudent';
 import { teacherClass } from './endpoint/teacherClass';
 import { studentHobbie } from './endpoint/studentHobbie';
+
 
 const app: Express = express();
 
@@ -20,6 +23,8 @@ app.post("/delete/:id",deleteTeacherClass)
 app.post("/changeModule/:id",changeModule)
 app.get("/docentesTurma/:id",teacherClass)
 app.post("/adicionar",addStudent)
+
+
 
 
 const server = app.listen(process.env.PORT || 3003, () => {
