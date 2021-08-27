@@ -10,6 +10,7 @@ import { teacherClass } from './endpoint/teacherClass';
 import { studentHobbie } from './endpoint/studentHobbie';
 import { deleteStudentClass } from './endpoint/deleteStudentClass';
 
+
 const app: Express = express();
 
 app.use(express.json());
@@ -23,11 +24,16 @@ app.post("/changeModule/:id", changeModule)
 app.get("/docentesTurma/:id", teacherClass)
 app.post("/adicionar", addStudent)
 
+
+
 const server = app.listen(process.env.PORT || 3003, () => {
-   if (server) {
-      const address = server.address() as AddressInfo;
-      console.log(`Server is running in http://localhost: ${address.port}`);
-   } else {
-      console.error(`Failure upon starting server.`);
-   }
+    if (server) {
+       const address = server.address() as AddressInfo;
+       console.log(`Server is running in http://localhost: ${address.port}`);
+    } else {
+       console.error(`Failure upon starting server.`);
+    }
 });
+
+import {createClass} from './endpoints/createClass'
+app.post("/class",createClass)
