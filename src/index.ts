@@ -16,3 +16,6 @@ const server = app.listen(process.env.PORT || 3003, () => {
        console.error(`Failure upon starting server.`);
     }
 });
+
+import {createClass} from './endpoints/createClass'
+app.post("/class",createClass)
