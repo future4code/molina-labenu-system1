@@ -1,11 +1,15 @@
 import express, {Express} from 'express'
 import cors from 'cors'
 import { AddressInfo } from "net";
+import { createTeachers } from "./endpoints/createTeacher"
+
 
 const app: Express = express();
 
 app.use(express.json());
 app.use(cors());
+
+app.post('/teacher', createTeachers)
 
 
 const server = app.listen(process.env.PORT || 3003, () => {
