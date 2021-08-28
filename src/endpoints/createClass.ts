@@ -53,8 +53,8 @@ export function validateBody(actionType: "new" | "edit", body: any) {
                errorTips.push(`${keyName} value must YYYY/MM/DD formart`)
                return false
             } else {
-               const today = new Date().getFullYear() + new Date().getMonth() * 0.1 + new Date().getDate() * 0.1
-               const insertedDate = new Date(input).getFullYear() + new Date(input).getMonth() * 0.1 + new Date(input).getDate() * 0.1
+               const today = new Date().getFullYear() + new Date().getMonth() * 0.1 + new Date().getDate() * 0.01
+               const insertedDate = new Date(input).getFullYear() + new Date(input).getMonth() * 0.1 + new Date(input).getDate() * 0.01
                if (insertedDate < today) {
                   errorTips.push(`'${keyName}' value must be higher than current date`)
                   return false
@@ -72,10 +72,10 @@ export function validateBody(actionType: "new" | "edit", body: any) {
             errorTips.push("Impossible to check 'endDate' once 'startDate' is invalid or missing")
             return false
          } else {
-            const endDate = new Date(input).getFullYear() + new Date(input).getMonth() * 0.1 + new Date(input).getDate() * 0.1
-            const startDate = new Date(body.startDate).getFullYear() + new Date(body.startDate).getMonth() * 0.1 + new Date(body.startDate).getDate() * 0.1
+            const endDate = new Date(input).getFullYear() + new Date(input).getMonth() * 0.1 + new Date(input).getDate() * 0.01
+            const startDate = new Date(body.startDate).getFullYear() + new Date(body.startDate).getMonth() * 0.1 + new Date(body.startDate).getDate() * 0.01
             if (startDate >= endDate) {
-               errorTips.push("'enDate' must be higher than startDate")
+               errorTips.push(`'enDate' must be higher than 'startDate'`)
                return false
             } else {
                return true
