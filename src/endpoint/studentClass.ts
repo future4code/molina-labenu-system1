@@ -3,7 +3,7 @@ import { connection } from "../data/connection";
 
 export const studentClass = async (req: Request, res: Response): Promise<void> => {
   try {
-    const id = Number(req.params.id)
+    const id = Number(req.params.classId)
     const result = await connection.raw(`
       SELECT class_id,student.name,class.name from class
       JOIN student
