@@ -10,7 +10,7 @@ import { teacherClass } from './endpoint/teacherClass';
 import { studentHobbie } from './endpoint/studentHobbie';
 import { deleteStudentClass } from './endpoint/deleteStudentClass';
 import { studentClass } from './endpoint/studentClass';
-import {createClass} from './endpoints/createClass'
+import {createClass} from './endpoint/createClass'
 
 const app: Express = express();
 

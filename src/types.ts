@@ -4,6 +4,12 @@ export type teacher = {
     birth_date: Date
 }
 
+export type student={
+    name:string,
+    email:string,
+    birth_date:Date
+}
+
 export type newClass = {
     name: string,
     type: CLASS_TYPE,

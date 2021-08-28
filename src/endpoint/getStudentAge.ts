@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { connection } from "../data/connection";
 import { getStudantsByID } from "../services/getStudantsByID";
-import { student } from "../type";
+import { student } from "../types";
 
 export const getStudentAge = async(req:Request,res:Response)=>{
     try{
