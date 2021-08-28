@@ -34,3 +34,9 @@ export enum CLASS_TYPE {
 }
 
 export type classModules = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
+
+export type student={
+    name:string,
+    email:string,
+    birth_date:Date
+}
