@@ -17,7 +17,6 @@ export default async function insertClass(body: newClass): Promise<registeredCla
         await connection("class")
             .insert(body)
     } catch (err) {
-        console.log(err)
         throw new Object({
             status: 500,
             message: err.message,
