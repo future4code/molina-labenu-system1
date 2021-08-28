@@ -12,6 +12,7 @@ import { deleteStudentClass } from './endpoint/deleteStudentClass';
 import { studentClass } from './endpoint/studentClass';
 import {createClass} from './endpoints/createClass'
 import {putTeacherClass} from './endpoint/putTeacherClass'
+import { deleteStudent } from './endpoint/deleteStudent';
 
 const app: Express = express();
 
@@ -29,6 +30,7 @@ app.get("/estudanteTurma/:id", studentClass)
 app.post("/adicionar", addStudent)
 app.post("/class",createClass)
 app.put("/teacher/:teacherId", putTeacherClass)
+app.delete("/student/:studentId", deleteStudent)
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
