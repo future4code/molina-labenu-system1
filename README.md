@@ -25,6 +25,10 @@
 - [Documentação API Postman](https://documenter.getpostman.com/view/16227218/TzzHnZHp)
 - [Acessar coleção Postman](https://app.getpostman.com/run-collection/16227218-601688d8-3696-4d13-b30f-ccb010803904?action=collection%2Ffork&collection-url=entityId%3D16227218-601688d8-3696-4d13-b30f-ccb010803904%26entityType%3Dcollection)
 
+#### Deploy
+- Heroku
+  - Base URI: https://labsystem1.herokuapp.com/
+
 <details>
 <summary>Requisitos Mínimos do Projeto</summary>
 
